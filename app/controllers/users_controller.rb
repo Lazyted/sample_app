@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params[:user])
   	if @user.save
+      # Sign in the new user
+      sign_in @user
   		# Show a one off "flash" message after succeful registration
   		flash[:success] = "Welcome to the Sample App!"
   		# Handle a successful save
